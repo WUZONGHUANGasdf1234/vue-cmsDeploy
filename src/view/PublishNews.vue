@@ -4,6 +4,7 @@ import '@wangeditor/editor/dist/css/style.css'
 import {onBeforeUnmount, ref, shallowRef, watch} from 'vue'
 import {Editor, Toolbar} from '@wangeditor/editor-for-vue'
 import {saveNews, saveNews as save, updateNews} from "@/http/news.ts";
+import type { IDomEditor } from '@wangeditor/editor';
 
 
 // ✅ 定义 Props：接收编辑的新闻数据
@@ -21,7 +22,8 @@ const emit = defineEmits(['save-success'])
 
 
 
-const editorRef = shallowRef()
+// const editorRef = shallowRef()
+const editorRef = ref<IDomEditor | null>(null);
 const toolbarConfig = {}
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
@@ -33,7 +35,7 @@ const mode = ref("default")
 // 内容 HTML（提交给后端使用）
 const valueHtml = ref()
 
-const handleCreated = (editor) => {
+const handleCreated = (editor: IDomEditor) => {
   editorRef.value = editor // 记录 editor 实例，重要！
 }
 

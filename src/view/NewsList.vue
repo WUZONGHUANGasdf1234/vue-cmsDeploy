@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {deleteNews, newsList, updateNewsStatus} from "@/http/news.ts";
+import {deleteNews, type newsData, newsList, updateNewsStatus} from "@/http/news.ts";
 import PublishNews from "@/view/PublishNews.vue";
 
 export interface News{
@@ -61,7 +61,7 @@ const closeModal = async () => {
 const loadNewsList = async () => {
   const { total, totalPage, data } = await newsList(currentPage.value, 2)
   totalNum.value = totalPage
-  newsListData.value = data.map(news => ({
+  newsListData.value = data.map((news: News) => ({
     ...news,
     content: stripHtml(news.content).slice(0, 60) + '...'
   }))
