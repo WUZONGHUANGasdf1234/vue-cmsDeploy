@@ -63,15 +63,15 @@ editorConfig.MENU_CONF['uploadImage'] = {
 
 
 
-const newsType = ref<number>();
-const newsTitle = ref<string>();
+const newsType = ref<number>(0);
+const newsTitle = ref<string>("");
 
 // ✅ 保存新闻
 const saveNew = async () => {
   const baseNewsData = {
-    title: newsTitle.value,
-    category: newsType.value,
-    content: valueHtml.value,
+    newsTitle: newsTitle.value,
+    newsType: newsType.value,
+    newsContent: valueHtml.value,
   }
   // 2. 判断是新增还是编辑
   if (props.news?.id) {
