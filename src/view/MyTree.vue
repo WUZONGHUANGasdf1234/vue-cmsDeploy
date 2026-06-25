@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed} from "vue";
-import type {Permission} from "@/App.vue";
+import type {Permission} from "./RoleInfo.vue";
 
 const props = defineProps({
   item:{
@@ -23,11 +23,14 @@ const typeClass = computed(()=>{
 
 const emit= defineEmits(['node-change'])
 
-const handleChange=(e:MouseEvent)=>{
+const handleChange=(e:Event)=>{
+
+  // 1. 将 e.target 断言为 HTMLInputElement 类型
+  const target = e.target as HTMLInputElement;
   //知道自己勾选的是谁
   // console.log("事件对象",e.target.checked);
   console.log("点击的是",props.item)
-  emit('node-change',props.item,e.target?.checked);//事件的元素，状态传递给父组件
+  emit('node-change',props.item,target?.checked);//事件的元素，状态传递给父组件
 }
 
 //处理子权限
