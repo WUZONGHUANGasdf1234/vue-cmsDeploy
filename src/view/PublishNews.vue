@@ -39,7 +39,9 @@ const handleCreated = (editor) => {
 
 const editorConfig = {
   placeholder: '请输入内容......',
-  MENU_CONF: {}
+  MENU_CONF: {
+    uploadImage: {}
+  }
 }
 
 editorConfig.MENU_CONF['uploadImage'] = {
@@ -63,7 +65,7 @@ editorConfig.MENU_CONF['uploadImage'] = {
 
 
 
-const newsType = ref<number>(0);
+const newsType = ref<number>(1);
 const newsTitle = ref<string>("");
 
 // ✅ 保存新闻
@@ -95,7 +97,7 @@ watch(() => props.news, (newVal) => {
     valueHtml.value = newVal.content
   } else {
     newsTitle.value = ''
-    newsType.value = undefined
+    newsType.value = 1
     valueHtml.value = ''
   }
 }, { immediate: true })
@@ -107,10 +109,10 @@ watch(() => props.news, (newVal) => {
     新闻标题：<input type="text" v-model="newsTitle">
     栏目：
     <select v-model="newsType">
-      <option value="1">学院新闻</option>
-      <option value="2">通知公告</option>
-      <option value="3">学术活动</option>
-      <option value="4">学工新闻</option>
+      <option value=1>学院新闻</option>
+      <option value=2>通知公告</option>
+      <option value=3>学术活动</option>
+      <option value=4>学工新闻</option>
     </select>
   </div>
   <div style="border: 1px solid #ccc;height: 600px;">

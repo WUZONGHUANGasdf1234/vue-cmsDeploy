@@ -8,6 +8,7 @@ export interface News{
   title:string;
   status:string;
   content:string;
+  category: number;
 }
 const newsListData = ref<News[]>([]);
 const stripHtml = (html: string) => {
