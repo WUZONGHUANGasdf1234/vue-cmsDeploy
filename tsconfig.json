@@ -7,12 +7,7 @@
     {
       "path": "./tsconfig.app.json"
     },
-    {
-      "compilerOptions": {
-        // ...其他配置
-        "suppressImplicitAnyIndexErrors": true
-      }
-    }
+
   ],
 
 }
