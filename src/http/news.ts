@@ -2,9 +2,9 @@ import axios from "@/http/axios .ts";
 
 export interface newsData {
     id?: number | null;
-    newsTitle:string
-    newsType:number
-    newsContent:string
+    title:string
+    category:number
+    content:string
 
 }
 

@@ -73,16 +73,16 @@ const newsTitle = ref<string>("");
 // ✅ 保存新闻
 const saveNew = async () => {
   const baseNewsData = {
-    newsTitle: newsTitle.value,
-    newsType: newsType.value,
-    newsContent: valueHtml.value,
+    title: newsTitle.value,
+    category: newsType.value,
+    content: valueHtml.value,
   }
   // 2. 判断是新增还是编辑
   if (props.news?.id) {
     // ✅ 编辑模式：手动创建一个包含 id 的新对象
     const newsData = {
       ...baseNewsData,      // 先展开基础数据
-      id: props.news.id // 再单独加上 id
+      id: Number(props.news.id)// 再单独加上 id
     };
     await updateNews(newsData);
   } else {
