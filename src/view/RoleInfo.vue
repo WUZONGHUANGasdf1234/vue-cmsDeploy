@@ -155,16 +155,9 @@ const calculateParentStatus = (allPermission: Permission[]) => {
     // 采用后序遍历，先从最底层的 children 开始计算
     if (node.children && node.children.length > 0) {
       calculateParentStatus(node.children);
-      // 1. 使用 every 检查是否【全选】：必须所有子节点的 checked 都为 true
-      let allChecked = node.children.every(child => child.checked);
-      // 2. 使用 some 检查是否【有勾选】：只要有一个子节点被勾选(checked) 或 处于半选(halfChecked)
-      let hasChecked = node.children.some(child => child.checked || child.halfChecked);
-      node.checked = allChecked;
-      node.halfChecked = !allChecked && hasChecked;
-      if (!allChecked && !hasChecked && node.menuGranted) {
-        node.checked = false;
-        node.halfChecked = true;
-      }
+      // ✅ 只要有一个子节点被选中，父节点就算选中
+      node.checked = node.children.some(
+          child => child.checked)
     }
   });
 };
@@ -207,11 +200,7 @@ const onNodeChange=(node:Permission,isChecked:boolean)=>{
 }
 const updateChildState=(node:Permission,isChecked:boolean)=>{
   node.checked = isChecked;
-  node.halfChecked = false;
 
-  if(!isChecked){
-    node.menuGranted=false;
-  }
 
   if(node.children && node.children.length>0){
     node.children.forEach(child=>{
@@ -353,6 +342,35 @@ const isHide=ref(true);//值为true关闭遮罩层
 </template>
 
 <style scoped>
+
+.rbac-modal-content {
+  width: 640px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ 新增 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 权限树区域可滚动 */
+.rbac-modal-content > div {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 保存按钮固定在底部 */
+.save {
+  margin-top: 12px;
+  align-self: flex-end;
+}
+
 table,tr,th,td{
   border: 1px solid black;
   border-collapse: collapse;

@@ -44,7 +44,6 @@ const handleChildChange=(node:Permission,isChecked:boolean)=>{
   <div class="menu-content">
     <input type="checkbox"
            :checked="item.checked"
-           .indeterminate="item.halfChecked"
            @change="handleChange">
     <span class="item-name">{{props.item.name}}</span>
     <span class="item-menuType" :class="typeClass">{{typeName2Chinese}}</span>
