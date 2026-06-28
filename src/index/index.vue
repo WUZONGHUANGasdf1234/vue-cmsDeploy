@@ -15,11 +15,14 @@ import Footer from "@/index/components/footer.vue";
 </template>
 
 <style>
-  *{
-    padding: 0;
-    margin: 0;
-  }
-  .index{
-    height: 1000px;
-  }
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+.index {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 </style>

@@ -56,7 +56,7 @@ const toggleMenu = (idx: number) => {
   width: 260px;
   background: #fff;
   border-right: 1px solid #e5e6eb;
-  height: 100vh;
+  height: 100%;
 }
 
 li a {

@@ -12,5 +12,6 @@
   .content{
     height: 100%;
     flex: 6;
+    overflow: auto;
   }
 </style>

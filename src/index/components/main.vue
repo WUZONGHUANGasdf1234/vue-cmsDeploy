@@ -13,8 +13,8 @@ import Content from "@/index/components/content.vue";
 
 <style scoped>
   .main{
-    width: 100%;
-    height: 80%;
+    flex: 1;
     display: flex;
+    overflow: hidden;
   }
 </style>

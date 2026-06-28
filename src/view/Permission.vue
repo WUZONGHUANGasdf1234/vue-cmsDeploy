@@ -303,174 +303,105 @@ const closeAddDialog = () => {
     </div>
   </div>
 </template>
-
 <style scoped>
 .permission-container {
-  padding: 20px;
+padding: 16px;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+margin-bottom: 12px;
+}
+
+.header h2 {
+font-size: 16px;
+margin: 0;
 }
 
 .add-btn {
-  background-color: #409eff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
+margin-top: 8px;
 }
 
-.add-btn:hover {
-  background-color: #337ecc;
-}
-
+/* ===== 表格 ===== */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+width: 100%;
+border-collapse: collapse;
+table-layout: fixed;
+font-size: 13px;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 12px 8px;
-  text-align: left;
+border: 1px solid #ccc;
+padding: 6px 8px;
+text-align: left;
 }
 
 th {
-  background-color: #f5f7fa;
-  font-weight: bold;
+background-color: #f2f2f2;
 }
 
-tr:hover {
-  background-color: #f5f7fa;
+/* 列宽兜底 */
+th:nth-child(1), td:nth-child(1) { width: 50px; }
+th:nth-child(3), td:nth-child(3) { width: 60px; }
+th:nth-child(7), td:nth-child(7) { width: 50px; }
+th:nth-child(8), td:nth-child(8) { width: 90px; }
+
+/* 防止长内容撑破 */
+td:nth-child(2),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
 }
 
-.type-directory {
-  color: #67c23a;
-  background-color: #f0f9eb;
-  padding: 2px 8px;
-  border-radius: 4px;
+/* ===== 按钮 ===== */
+button {
+margin-right: 4px;
+padding: 2px 6px;
+font-size: 12px;
+cursor: pointer;
 }
 
-.type-menu {
-  color: #409eff;
-  background-color: #ecf5ff;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.type-button {
-  color: #e6a23c;
-  background-color: #fdf6ec;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.edit-btn, .delete-btn {
-  padding: 4px 8px;
-  margin-right: 5px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.edit-btn {
-  background-color: #409eff;
-  color: white;
-}
-
-.delete-btn {
-  background-color: #f56c6c;
-  color: white;
-}
-
-/* 弹窗样式 - 与 RoleInfo.vue 保持一致 */
+/* ===== 弹窗 ===== */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+position: fixed;
+inset: 0;
+background: rgba(0, 0, 0, 0.3);
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .modal-content {
-  width: 500px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  position: relative;
-  padding: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
+background: #fff;
+padding: 16px;
+width: 440px;
+border: 1px solid #ccc;
 }
 
 .modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  cursor: pointer;
-  font-size: 20px;
-  color: #999;
+float: right;
+cursor: pointer;
 }
 
-.form-container {
-  margin-top: 20px;
-}
-
+/* ===== 表单 ===== */
 .form-group {
-  margin-bottom: 15px;
+margin-bottom: 10px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+display: block;
+margin-bottom: 4px;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.save-btn, .cancel-btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.save-btn {
-  background-color: #409eff;
-  color: white;
-}
-
-.cancel-btn {
-  background-color: #f4f4f5;
-  color: #606266;
+input, select {
+width: 100%;
+padding: 4px 6px;
+box-sizing: border-box;
 }
 
 .modelHide {
-  display: none;
+display: none;
 }
 </style>
