@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 // 2. 引入 router (假设你已经创建了 router 文件)
 import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import permissionDirective from '@/directives/permission'
 
 // 3. 创建 Pinia 实例
 const pinia = createPinia()
@@ -17,3 +18,4 @@ app.use(pinia)
 app.use(router)
 
 app.mount('#app')
+app.use(permissionDirective)

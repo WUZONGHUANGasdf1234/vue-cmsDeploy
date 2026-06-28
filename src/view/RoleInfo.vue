@@ -304,7 +304,7 @@ const isHide=ref(true);//值为true关闭遮罩层
       <td>
         <button @click="openAuthDialog(role.id)">授权</button>
         <button @click="openEditDialog(role)">编辑</button>
-        <button @click="handleDeleteRole(role.id)">删除</button>
+        <button v-permission="'role:delete'" @click="handleDeleteRole(role.id)">删除</button>
       </td>
     </tr>
   </table>
